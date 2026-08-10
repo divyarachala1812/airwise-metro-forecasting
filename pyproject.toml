@@ -1,0 +1,35 @@
+[project]
+name = "india-metro-air-quality-forecasting"
+version = "1.0.0"
+description = "Next-day PM2.5 forecasting for Delhi, Mumbai, and Hyderabad"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+authors = [{ name = "Divya Rachala" }]
+dependencies = [
+  "joblib>=1.4",
+  "matplotlib>=3.9",
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "requests>=2.32",
+  "scikit-learn>=1.6",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3",
+  "ruff>=0.9",
+]
+
+[tool.uv]
+package = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

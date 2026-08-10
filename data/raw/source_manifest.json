@@ -1,0 +1,53 @@
+{
+  "source": "Open-Meteo Air Quality API and Historical Weather API",
+  "period": {
+    "start": "2022-08-01",
+    "end": "2025-12-31"
+  },
+  "licence": "CC BY 4.0",
+  "files": [
+    {
+      "city": "Delhi",
+      "kind": "air_quality",
+      "path": "delhi_air_quality.json",
+      "sha256": "d46082e1855ec0e402c4d36d07fafa0b77495eaa9dc66791e8cef3503bb5a46e"
+    },
+    {
+      "city": "Delhi",
+      "kind": "weather",
+      "path": "delhi_weather.json",
+      "sha256": "0bf2ea69eeceffcdbd2d961a724b3ec0ae93201558aba28a88809b0ac49beb9b"
+    },
+    {
+      "city": "Mumbai",
+      "kind": "air_quality",
+      "path": "mumbai_air_quality.json",
+      "sha256": "56372c369f4819d389c68a20ed1741bdd122ffeadde4352cfd122a00baeefd18"
+    },
+    {
+      "city": "Mumbai",
+      "kind": "weather",
+      "path": "mumbai_weather.json",
+      "sha256": "f111c07a6ccb10df9c1cfc4dec020220eaa865066c6804f9c3fa2a5c4df5dfb0"
+    },
+    {
+      "city": "Hyderabad",
+      "kind": "air_quality",
+      "path": "hyderabad_air_quality.json",
+      "sha256": "16c6e8ec7ab8e5c37a891fc7816fd3bde43e7a435bcd1aa1450528ca8bf94666"
+    },
+    {
+      "city": "Hyderabad",
+      "kind": "weather",
+      "path": "hyderabad_weather.json",
+      "sha256": "af44d02e9128f77fe08868e2d248191b8563b329d840e8dfb7e9edb1ef573392"
+    }
+  ],
+  "rows": 3747,
+  "cities": [
+    "Delhi",
+    "Hyderabad",
+    "Mumbai"
+  ],
+  "processed_file": "india_metro_daily_air_quality.csv"
+}
