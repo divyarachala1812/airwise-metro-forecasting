@@ -2,9 +2,19 @@
 
 Next-day PM2.5 forecasting for Delhi, Mumbai, and Hyderabad using daily air-quality, weather, seasonal, and lag features. The project is intentionally a compact machine-learning case study: it focuses on temporal validation, baselines, explainability, and honest error analysis instead of a large application interface.
 
-**Author:** Divya Rachala
-**Analysis period:** 1 August 2022–31 December 2025
-**Forecast target:** next-day daily mean PM2.5 concentration
+[![CI](https://github.com/divyarachala1812/india-metro-air-quality-forecasting/actions/workflows/ci.yml/badge.svg)](https://github.com/divyarachala1812/india-metro-air-quality-forecasting/actions/workflows/ci.yml)
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-3776ab)](pyproject.toml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2a9d8f)](LICENSE)
+
+| Project detail | Value |
+|---|---|
+| Author | Divya Rachala |
+| Cities | Delhi, Mumbai, and Hyderabad |
+| Analysis period | 1 August 2022–31 December 2025 |
+| Forecast target | Next-day daily mean PM2.5 concentration |
+| Portfolio track | Machine learning |
+
+**Quick navigation:** [Results](#result-summary) · [Evaluation gallery](#evaluation-gallery) · [Method](#method) · [Testing](#testing-and-reproducibility) · [PDF report](reports/India_Metro_Air_Quality_Forecasting_Report.pdf)
 
 ## Why this project
 
@@ -34,7 +44,15 @@ The learned model improves test MAE by about 4.7% relative to persistence. This 
 
 City-level error is unequal: Delhi is the hardest city (MAE 14.47), while Mumbai (5.63) and Hyderabad (5.39) are more stable. Hyderabad has almost no 2025 days above the chosen 60 µg/m³ alert threshold, so alert precision, recall, and F1 are reported as zero rather than treated as meaningful performance estimates.
 
-![2025 next-day predictions](reports/figures/01_test_predictions.png)
+## Evaluation gallery
+
+| 2025 forecast trace | Candidate model comparison |
+|---|---|
+| ![Observed and predicted PM2.5 during 2025](reports/figures/01_test_predictions.png) | ![Validation comparison of candidate models](reports/figures/02_model_comparison.png) |
+| Permutation importance | Residual diagnostics |
+| ![Permutation feature importance](reports/figures/03_feature_importance.png) | ![Residual distributions by city](reports/figures/04_residuals.png) |
+
+The gallery covers forecast fit, model selection, feature influence, and city-level error behaviour rather than presenting only the strongest aggregate score.
 
 ## Method
 
@@ -71,12 +89,23 @@ src/airwise/          Data, feature, and modelling code
 tests/                Feature and repository contract tests
 ```
 
-## Reproduce the project
+## Testing and reproducibility
+
+| Quality gate | Latest verified result | Purpose |
+|---|---:|---|
+| Python tests | **3 passed** | Feature engineering and repository contracts |
+| Ruff linting | **Passed** | Imports, correctness rules, and code consistency |
+| Temporal split contract | **Passed** | Train through June 2024, validate in late 2024, test on 2025 |
+| Baseline comparison | **Passed** | Selected model evaluated against persistence |
+| Continuous integration | **Automated** | [GitHub Actions workflow](.github/workflows/ci.yml) |
+
+Reproduce the complete project with:
 
 ```bash
 uv sync
 uv run python scripts/download_data.py
 uv run python scripts/train_model.py
+uv run python scripts/build_report.py
 uv run pytest -q
 uv run ruff check .
 ```
@@ -103,6 +132,7 @@ uv run python scripts/predict_example.py
 - [Dataset documentation](docs/dataset.md)
 - [Model card](docs/model-card.md)
 - [Project report](docs/project-report.md)
+- [Illustrated project report (PDF)](reports/India_Metro_Air_Quality_Forecasting_Report.pdf)
 
 ## Responsible-use note
 

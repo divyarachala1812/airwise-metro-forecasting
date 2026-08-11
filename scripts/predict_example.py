@@ -1,3 +1,4 @@
+import _project_path  # noqa: F401
 import joblib
 import pandas as pd
 

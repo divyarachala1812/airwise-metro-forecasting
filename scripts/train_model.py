@@ -1,5 +1,6 @@
 import json
 
+import _project_path  # noqa: F401
 import pandas as pd
 
 from airwise.config import PROCESSED_DIR
