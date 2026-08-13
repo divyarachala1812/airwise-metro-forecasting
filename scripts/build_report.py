@@ -137,7 +137,7 @@ def decorate_page(pdf_canvas, doc) -> None:
         pdf_canvas.drawString(18 * mm, height - 10.5 * mm, "INDIA METRO AIR QUALITY FORECASTING")
         pdf_canvas.setFillColor(MUTED)
         pdf_canvas.setFont("Helvetica", 8)
-        pdf_canvas.drawString(18 * mm, 11 * mm, "Divya Rachala | Data Science Portfolio")
+        pdf_canvas.drawString(18 * mm, 11 * mm, "Divya Rachala | Machine Learning Project")
         pdf_canvas.drawRightString(width - 18 * mm, 11 * mm, f"Page {page} of 10")
     pdf_canvas.restoreState()
 
@@ -157,7 +157,7 @@ def build_report() -> Path:
         bottomMargin=18 * mm,
         title="India Metro Air Quality Forecasting",
         author="Divya Rachala",
-        subject="Machine learning portfolio project report",
+        subject="Machine learning project report",
     )
     story = []
 
@@ -172,7 +172,7 @@ def build_report() -> Path:
             Spacer(1, 25 * mm),
             report_table(
                 [
-                    ["Portfolio summary", "Verified result"],
+                    ["Project summary", "Verified result"],
                     ["Data", "3,747 city-day records from August 2022 to December 2025"],
                     ["Model", "Ridge regression with alpha 10 and chronological validation"],
                     ["Final test", "MAE 8.50 ug/m3, R2 0.851, alert recall 0.871"],
@@ -188,7 +188,7 @@ def build_report() -> Path:
         [
             Paragraph("Executive brief", H1),
             Paragraph(
-                "This project estimates the next day's city-level mean PM2.5 using current and historical pollution, weather, city, and seasonal signals. It is a compact, interview-ready machine learning case study rather than a production alerting system.",
+                "This project estimates the next day's city level mean PM2.5 using current and historical pollution, weather, city, and seasonal signals. It is a compact machine learning study rather than a production alerting system.",
                 BODY,
             ),
             report_table(
@@ -203,7 +203,7 @@ def build_report() -> Path:
                 [45 * mm, 103 * mm],
             ),
             Spacer(1, 5 * mm),
-            Paragraph("Portfolio value", H2),
+            Paragraph("Project value", H2),
             *bullets(
                 [
                     "Prevents future information from leaking into training.",
@@ -225,11 +225,11 @@ def build_report() -> Path:
             ),
             report_table(
                 [
-                    ["Reviewer", "Question answered"],
+                    ["Role", "Question answered"],
                     ["Data scientist", "Was leakage prevented and was the baseline credible?"],
                     ["Environmental analyst", "Which cities and conditions drive the error?"],
                     [
-                        "Hiring manager",
+                        "Project reader",
                         "Can the model choice and limitations be explained clearly?",
                     ],
                     ["Engineer", "Can the data, features, model, and evidence be reproduced?"],
@@ -431,7 +431,7 @@ def build_report() -> Path:
 
     story.extend(
         [
-            Paragraph("Reproducibility, evidence, and interview value", H1),
+            Paragraph("Reproducibility and evidence", H1),
             report_table(
                 [
                     ["Step", "Command or artifact"],

@@ -48,7 +48,7 @@ Delhi drives most of the remaining error because it has higher concentrations an
 
 Recent PM2.5 and related pollutant history dominate. Weather and seasonality contribute additional adjustment. This is consistent with a next-day task: current atmospheric conditions contain most of the predictable signal, while abrupt emission or meteorological changes remain difficult.
 
-The modest improvement over persistence is itself an important finding. A portfolio project should not claim that a complex model is transformative when the evidence shows an incremental gain.
+The modest improvement over persistence is itself an important finding. The project does not claim that a complex model is transformative when the evidence shows an incremental gain.
 
 ## 8. Limitations
 

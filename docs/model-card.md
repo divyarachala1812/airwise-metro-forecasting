@@ -66,7 +66,7 @@ The learned model reduces test MAE from 8.918 to 8.496 µg/m³ against persisten
 - educational next-day forecasting demonstration;
 - comparison of a learned model with a temporal baseline;
 - investigation of feature influence and city-level error;
-- portfolio discussion of validation design and model limitations.
+1. explanation of validation design and model limitations.
 
 ## Out-of-scope use
 

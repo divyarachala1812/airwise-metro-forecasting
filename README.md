@@ -1,6 +1,6 @@
 # India Metro Air Quality Forecasting
 
-Next-day PM2.5 forecasting for Delhi, Mumbai, and Hyderabad using daily air-quality, weather, seasonal, and lag features. The project is intentionally a compact machine-learning case study: it focuses on temporal validation, baselines, explainability, and honest error analysis instead of a large application interface.
+Next day PM2.5 forecasting for Delhi, Mumbai, and Hyderabad using daily air quality, weather, seasonal, and lag features. This compact machine learning project focuses on temporal validation, baselines, explainability, and honest error analysis.
 
 [![CI](https://github.com/divyarachala1812/india-metro-air-quality-forecasting/actions/workflows/ci.yml/badge.svg)](https://github.com/divyarachala1812/india-metro-air-quality-forecasting/actions/workflows/ci.yml)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776ab)](pyproject.toml)
@@ -11,22 +11,26 @@ Next-day PM2.5 forecasting for Delhi, Mumbai, and Hyderabad using daily air-qual
 | Author | Divya Rachala |
 | Cities | Delhi, Mumbai, and Hyderabad |
 | Analysis period | 1 August 2022–31 December 2025 |
-| Forecast target | Next-day daily mean PM2.5 concentration |
-| Portfolio track | Machine learning |
+| Forecast target | Next day daily mean PM2.5 concentration |
+| Project type | Machine learning |
 
 **Quick navigation:** [Results](#result-summary) · [Evaluation gallery](#evaluation-gallery) · [Method](#method) · [Testing](#testing-and-reproducibility) · [PDF report](reports/India_Metro_Air_Quality_Forecasting_Report.pdf)
 
-## Why this project
+## Problem, root cause and purpose
 
-Air-quality forecasting is a practical time-dependent regression problem. It tests skills that are easy to discuss in an interview:
+City level PM2.5 can change quickly, and a useful next day estimate must respect time order. The main modelling risk is leakage: a random split can place neighbouring dates in both training and testing and make the result look stronger than it is. A second risk is selecting a complex model without comparing it with the simple rule that tomorrow may resemble today.
 
-- acquiring and documenting real India-specific environmental data;
-- turning hourly pollutant values into a consistent daily panel;
-- creating lag, rolling-window, weather, city, and seasonality features;
-- preventing future information from leaking into training;
-- comparing a learned model with a strong persistence baseline;
-- evaluating both concentration error and a policy-relevant alert threshold;
-- explaining where the model works, where it struggles, and what data would improve it.
+I built this project to test whether a compact model can improve on that persistence baseline for Delhi, Mumbai and Hyderabad. The project creates a daily city panel, uses only past information for lag and rolling features, selects a model on a chronological validation period, evaluates once on unseen 2025 data, and explains the remaining city level errors.
+
+The work covers seven practical tasks.
+
+1. Acquire and document India specific environmental data.
+2. Convert hourly pollutant values into a consistent daily panel.
+3. Create lag, rolling window, weather, city and seasonality features.
+4. Prevent future information from entering training rows.
+5. Compare learned models with a persistence baseline.
+6. Evaluate concentration error and a declared alert threshold.
+7. Explain where the model works, where it struggles and what data would improve it.
 
 ## Result summary
 
