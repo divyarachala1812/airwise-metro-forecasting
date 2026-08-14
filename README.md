@@ -13,6 +13,8 @@ Next day PM2.5 forecasting for Delhi, Mumbai, and Hyderabad using daily air qual
 | Analysis period | 1 August 2022–31 December 2025 |
 | Forecast target | Next day daily mean PM2.5 concentration |
 | Project type | Machine learning |
+| Prepared panel | 3,747 city day rows |
+| Temporal split | 2,070 train, 552 validation, 1,095 test rows |
 
 **Quick navigation:** [Results](#result-summary) · [Evaluation gallery](#evaluation-gallery) · [Method](#method) · [Testing](#testing-and-reproducibility) · [PDF report](reports/AirWise_Metro_Forecasting_Report.pdf)
 
@@ -35,6 +37,8 @@ The work covers seven practical tasks.
 ## Result summary
 
 The selected Ridge model was chosen on the July–December 2024 validation period and evaluated once on the unseen 2025 test period.
+
+The prepared modelling panel contains 3,747 city day rows. The chronological split keeps 2,070 rows for training, 552 for model selection and 1,095 for the final unseen 2025 evaluation.
 
 | Metric | Selected model | Persistence baseline |
 |---|---:|---:|
