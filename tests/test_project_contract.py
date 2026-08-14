@@ -9,7 +9,7 @@ def test_required_project_assets_exist() -> None:
         "docs/dataset.md",
         "docs/model-card.md",
         "reports/model_metrics.json",
-        "reports/India_Metro_Air_Quality_Forecasting_Report.pdf",
+        "reports/AirWise_Metro_Forecasting_Report.pdf",
         "reports/test_predictions_2025.csv",
         "reports/figures/01_test_predictions.png",
         "scripts/build_report.py",

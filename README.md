@@ -1,8 +1,8 @@
-# India Metro Air Quality Forecasting
+# AirWise Metro Forecasting
 
 Next day PM2.5 forecasting for Delhi, Mumbai, and Hyderabad using daily air quality, weather, seasonal, and lag features. This compact machine learning project focuses on temporal validation, baselines, explainability, and honest error analysis.
 
-[![CI](https://github.com/divyarachala1812/india-metro-air-quality-forecasting/actions/workflows/ci.yml/badge.svg)](https://github.com/divyarachala1812/india-metro-air-quality-forecasting/actions/workflows/ci.yml)
+[![CI](https://github.com/divyarachala1812/airwise-metro-forecasting/actions/workflows/ci.yml/badge.svg)](https://github.com/divyarachala1812/airwise-metro-forecasting/actions/workflows/ci.yml)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776ab)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-2a9d8f)](LICENSE)
 
@@ -14,7 +14,7 @@ Next day PM2.5 forecasting for Delhi, Mumbai, and Hyderabad using daily air qual
 | Forecast target | Next day daily mean PM2.5 concentration |
 | Project type | Machine learning |
 
-**Quick navigation:** [Results](#result-summary) · [Evaluation gallery](#evaluation-gallery) · [Method](#method) · [Testing](#testing-and-reproducibility) · [PDF report](reports/India_Metro_Air_Quality_Forecasting_Report.pdf)
+**Quick navigation:** [Results](#result-summary) · [Evaluation gallery](#evaluation-gallery) · [Method](#method) · [Testing](#testing-and-reproducibility) · [PDF report](reports/AirWise_Metro_Forecasting_Report.pdf)
 
 ## Problem, root cause and purpose
 
@@ -55,6 +55,8 @@ City-level error is unequal: Delhi is the hardest city (MAE 14.47), while Mumbai
 | ![Observed and predicted PM2.5 during 2025](reports/figures/01_test_predictions.png) | ![Validation comparison of candidate models](reports/figures/02_model_comparison.png) |
 | Permutation importance | Residual diagnostics |
 | ![Permutation feature importance](reports/figures/03_feature_importance.png) | ![Residual distributions by city](reports/figures/04_residuals.png) |
+| City-level error | Research report |
+| ![Test MAE by city](reports/figures/05_city_error.png) | [Plain research-style PDF with five explained experiments](reports/AirWise_Metro_Forecasting_Report.pdf) |
 
 The gallery covers forecast fit, model selection, feature influence, and city-level error behaviour rather than presenting only the strongest aggregate score.
 
@@ -136,7 +138,7 @@ uv run python scripts/predict_example.py
 - [Dataset documentation](docs/dataset.md)
 - [Model card](docs/model-card.md)
 - [Project report](docs/project-report.md)
-- [Illustrated project report (PDF)](reports/India_Metro_Air_Quality_Forecasting_Report.pdf)
+- [Research-style project report (PDF)](reports/AirWise_Metro_Forecasting_Report.pdf)
 
 ## Responsible-use note
 

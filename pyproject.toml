@@ -1,5 +1,5 @@
 [project]
-name = "india-metro-air-quality-forecasting"
+name = "airwise-metro-forecasting"
 version = "1.0.0"
 description = "Next-day PM2.5 forecasting for Delhi, Mumbai, and Hyderabad"
 readme = "README.md"

@@ -171,6 +171,22 @@ def _save_figures(
     figure.savefig(FIGURES_DIR / "04_residuals.png", dpi=180, bbox_inches="tight")
     plt.close(figure)
 
+    city_error = (
+        results.assign(absolute_error=lambda frame: frame["residual"].abs())
+        .groupby("city", as_index=False)["absolute_error"]
+        .mean()
+        .sort_values("absolute_error", ascending=False)
+    )
+    figure, axis = plt.subplots(figsize=(9, 5))
+    bars = axis.bar(city_error["city"], city_error["absolute_error"], color="#777777")
+    axis.bar_label(bars, fmt="%.2f")
+    axis.set_ylabel("Test MAE (µg/m³; lower is better)")
+    axis.set_title("2025 error by city")
+    axis.set_ylim(0, city_error["absolute_error"].max() * 1.18)
+    figure.tight_layout()
+    figure.savefig(FIGURES_DIR / "05_city_error.png", dpi=180, bbox_inches="tight")
+    plt.close(figure)
+
 
 def train_and_evaluate(features: pd.DataFrame) -> dict[str, object]:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
