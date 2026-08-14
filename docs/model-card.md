@@ -63,7 +63,7 @@ The learned model reduces test MAE from 8.918 to 8.496 µg/m³ against persisten
 
 ## Intended use
 
-- educational next-day forecasting demonstration;
+- experimental next day forecasting;
 - comparison of a learned model with a temporal baseline;
 - investigation of feature influence and city-level error;
 1. explanation of validation design and model limitations.

@@ -6,7 +6,7 @@ from pathlib import Path
 from report_template import build_research_report
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "reports" / "AirWise_Metro_Forecasting_Report.pdf"
+OUTPUT = ROOT / "reports" / "AirWise_Report.pdf"
 FIGURES = ROOT / "reports" / "figures"
 
 
@@ -17,7 +17,7 @@ def build_report() -> Path:
             "title": "Project overview and problem statement",
             "paragraphs": [
                 "AirWise estimates next-day daily mean PM2.5 for Delhi, Mumbai, and Hyderabad. I framed the project around a practical modelling problem: a time-series result can look impressive when nearby dates leak across a random split, but such a score does not represent a true future forecast.",
-                "The project therefore uses chronological partitions, a strong persistence baseline, interpretable candidates, and a final unseen 2025 test period. The output is an educational forecast experiment and not a health warning or regulatory measurement.",
+                "The project therefore uses chronological partitions, a strong persistence baseline, interpretable candidates, and a final unseen 2025 test period. The output is a forecasting experiment and not a health warning or regulatory measurement.",
             ],
         },
         {
@@ -38,6 +38,34 @@ def build_report() -> Path:
             "paragraphs": [
                 "Persistence predicts tomorrow with today's PM2.5 and is the required baseline. Ridge regression with two regularisation settings and histogram gradient boosting are compared using validation MAE only. Ridge with alpha 10 is then refit on training plus validation data.",
                 "I report MAE, RMSE and R-squared for concentration error. A secondary threshold at 60 micrograms per cubic metre reports accuracy, precision, recall and F1. Permutation importance and city-level residual analysis explain where the shared model succeeds and fails.",
+            ],
+        },
+        {
+            "title": "End-to-end forecasting architecture",
+            "paragraphs": [
+                "The architecture separates hourly source collection, city-day aggregation, past-only feature engineering, chronological model selection and final holdout evaluation. Each stage writes a reviewable artefact before the next stage begins.",
+                "Open-Meteo provides air-quality and weather inputs. Python and pandas form the daily panel, while scikit-learn owns preprocessing, candidate comparison, Ridge fitting and permutation importance. The 2025 holdout is read only for the final reported result.",
+            ],
+            "figure": FIGURES / "06_architecture.png",
+            "caption": "Architecture diagram. AirWise technology and responsibility across the forecasting flow.",
+            "explanation": [
+                ["Stage design", "Hourly data becomes a daily city panel before lags and rolling features are generated within each city."],
+                ["Leakage control", "Candidate choice occurs on the chronological validation period, not on 2025 test rows."],
+                ["Evidence", "Predictions, model metrics, feature importance and figures remain versioned for independent inspection."],
+            ],
+        },
+        {
+            "title": "Automated forecasting test execution",
+            "paragraphs": [
+                "I ran the repository test suite after the report changes. Three tests passed. The checks verify chronological feature construction, exclusion of future values and the presence of the final model and evaluation assets.",
+                "These checks detect pipeline leakage and missing deliverables. Forecast quality is evaluated separately with the 1,095-row holdout, because a passing unit test cannot establish predictive usefulness.",
+            ],
+            "figure": FIGURES / "07_test_execution.png",
+            "caption": "Test execution evidence. Actual AirWise pytest execution for feature and repository contracts.",
+            "explanation": [
+                ["Execution", "Three tests passed in 0.52 seconds and no test failed."],
+                ["Critical rule", "Lag and rolling features must be derived from dates earlier than the target date."],
+                ["Boundary", "The tests do not replace monitoring for API changes, sensor bias or future atmospheric regimes."],
             ],
         },
         {
@@ -148,6 +176,20 @@ def build_report() -> Path:
             ],
         },
         {
+            "title": "Alert scenario error analysis",
+            "paragraphs": [
+                "The 60 micrograms per cubic metre threshold converts the continuous forecast into an alert-style scenario. I calculated the complete confusion matrix so recall can be interpreted beside false positives, false negatives and the number of below-threshold days.",
+                "A false negative is a day where observed PM2.5 reaches the threshold but the forecast remains below it. A false positive is the opposite. Both counts remain visible because an aggregate F1 score does not show which error type dominates.",
+            ],
+            "figure": FIGURES / "08_alert_confusion.png",
+            "caption": "Scenario evaluation. Alert confusion matrix on all 1,095 unseen 2025 city-day rows.",
+            "explanation": [
+                ["Scenario", "Observed and predicted concentrations are compared at the declared 60 micrograms per cubic metre threshold."],
+                ["Error interpretation", "False negatives affect alert recall, while false positives reduce precision."],
+                ["Use boundary", "This experiment evaluates model behaviour only and is not an operational health alert system."],
+            ],
+        },
+        {
             "title": "Results and interpretation",
             "paragraphs": [
                 f"On 1,095 unseen 2025 rows, Ridge alpha 10 achieved MAE {metrics['test']['mae']:.2f}, RMSE {metrics['test']['rmse']:.2f}, and R-squared {metrics['test']['r2']:.3f}. Persistence MAE was {metrics['persistence_test']['mae']:.2f}. The learned model therefore improves average error by about 4.7 percent.",
@@ -164,7 +206,7 @@ def build_report() -> Path:
         {
             "title": "Conclusion",
             "paragraphs": [
-                "I found that a compact Ridge model improves modestly on a strong persistence baseline for next-day metro PM2.5. The result is useful because it combines honest temporal validation, interpretable evidence, and city-level error analysis. The project demonstrates that a credible student model is not defined by the largest score; it is defined by a defensible split, a relevant baseline, reproducible tests, and clear limitations."
+                "I found that a compact Ridge model improves modestly on a strong persistence baseline for next day metro PM2.5. The result is useful because it combines honest temporal validation, interpretable evidence, and city level error analysis. A credible forecasting result is not defined by the largest score; it is defined by a defensible split, a relevant baseline, reproducible tests, and clear limitations."
             ],
         },
     ]

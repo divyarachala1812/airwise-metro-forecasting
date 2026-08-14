@@ -16,7 +16,7 @@ Next day PM2.5 forecasting for Delhi, Mumbai, and Hyderabad using daily air qual
 | Prepared panel | 3,747 city day rows |
 | Temporal split | 2,070 train, 552 validation, 1,095 test rows |
 
-**Quick navigation:** [Results](#result-summary) · [Evaluation gallery](#evaluation-gallery) · [Method](#method) · [Testing](#testing-and-reproducibility) · [PDF report](reports/AirWise_Metro_Forecasting_Report.pdf)
+**Quick navigation:** [Results](#result-summary) · [Evaluation gallery](#evaluation-gallery) · [Method](#method) · [Testing](#testing-and-reproducibility) · [PDF report](reports/AirWise_Report.pdf)
 
 ## Problem, root cause and purpose
 
@@ -60,7 +60,7 @@ City-level error is unequal: Delhi is the hardest city (MAE 14.47), while Mumbai
 | Permutation importance | Residual diagnostics |
 | ![Permutation feature importance](reports/figures/03_feature_importance.png) | ![Residual distributions by city](reports/figures/04_residuals.png) |
 | City-level error | Research report |
-| ![Test MAE by city](reports/figures/05_city_error.png) | [Plain research-style PDF with five explained experiments](reports/AirWise_Metro_Forecasting_Report.pdf) |
+| ![Test MAE by city](reports/figures/05_city_error.png) | [Project report with five evaluation experiments](reports/AirWise_Report.pdf) |
 
 The gallery covers forecast fit, model selection, feature influence, and city-level error behaviour rather than presenting only the strongest aggregate score.
 
@@ -142,11 +142,11 @@ uv run python scripts/predict_example.py
 - [Dataset documentation](docs/dataset.md)
 - [Model card](docs/model-card.md)
 - [Project report](docs/project-report.md)
-- [Research-style project report (PDF)](reports/AirWise_Metro_Forecasting_Report.pdf)
+- [Project report (PDF)](reports/AirWise_Report.pdf)
 
 ## Responsible-use note
 
-This is an educational forecasting project. It must not be used for health decisions, regulatory reporting, or emergency alerts. Production use would require calibrated station measurements, stronger forecast-time data controls, uncertainty intervals, drift monitoring, and review by air-quality specialists.
+This forecasting model must not be used for health decisions, regulatory reporting, or emergency alerts. Production use would require calibrated station measurements, stronger forecast-time data controls, uncertainty intervals, drift monitoring, and review by air-quality specialists.
 
 ## Licence and attribution
 
